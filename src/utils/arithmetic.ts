@@ -28,7 +28,7 @@ export function generateProblem(): Problem {
   let firstNumber: number;
   let secondNumber: number;
 
-  let randGen = function randGen(min: number, max: number) {
+  const randGen = function randGen(min: number, max: number) {
     return function() {
       return min + Math.floor(Math.random() * (max - min + 1));
     };
@@ -45,8 +45,8 @@ export function generateProblem(): Problem {
     "mul_right_max": 100,
   }
 
-  let genTypes = ['add_left', 'add_right', 'mul_left', 'mul_right'];
-  let randGens: Record<string, () => number> = {};
+  const genTypes = ['add_left', 'add_right', 'mul_left', 'mul_right'];
+  const randGens: Record<string, () => number> = {};
   genTypes.forEach(function(type) {
     randGens[type] = randGen(
       options[type + '_min'],
