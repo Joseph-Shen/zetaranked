@@ -100,6 +100,15 @@ export default function GameComponent({ gameState, code, playerName }: GameCompo
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-blue-50 to-blue-100 dark:from-gray-900 dark:to-gray-800 p-4">
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 w-full max-w-md">
+        <div className="flex justify-between items-center mb-4">
+          <h1 className="text-xl font-bold text-gray-800 dark:text-white">
+            {playerName}'s Game
+          </h1>
+          <div className="text-xl font-bold text-red-600 dark:text-red-400">
+            {timeLeft}s
+          </div>
+        </div>
+        
         {/* Timer */}
         <div className="mb-6 flex justify-center">
           <div className="bg-gray-100 dark:bg-gray-700 rounded-full px-4 py-2 flex items-center">
