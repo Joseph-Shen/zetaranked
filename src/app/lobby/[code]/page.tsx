@@ -76,7 +76,7 @@ export default function LobbyPage() {
           </h1>
           
           {isTie ? (
-            <h2 className="text-xl font-semibold text-center mb-4 text-yellow-500">It's a tie!</h2>
+            <h2 className="text-xl font-semibold text-center mb-4 text-yellow-500">Tie!</h2>
           ) : (
             <h2 className="text-xl font-semibold text-center mb-4 text-green-500">
               {isWinner ? 'You won!' : `${winner?.name} won!`}

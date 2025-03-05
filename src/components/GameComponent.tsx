@@ -26,10 +26,9 @@ interface GameState {
 interface GameComponentProps {
   gameState: GameState;
   code: string;
-  playerName: string;
 }
 
-export default function GameComponent({ gameState, code, playerName }: GameComponentProps) {
+export default function GameComponent({ gameState, code}: GameComponentProps) {
   const { socket, submitAnswer } = useSocket();
   const [timeLeft, setTimeLeft] = useState(gameState.duration);
   
@@ -50,7 +49,6 @@ export default function GameComponent({ gameState, code, playerName }: GameCompo
     userAnswer,
     setUserAnswer,
     submitAnswer: submitGameAnswer,
-    isCorrect,
   } = useArithmeticGame({
     isPlaying: gameState.status === 'playing',
     onCorrectAnswer: handleCorrectAnswer,
@@ -72,12 +70,6 @@ export default function GameComponent({ gameState, code, playerName }: GameCompo
     submitGameAnswer();
   };
   
-  // Handle key press
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') {
-      submitGameAnswer();
-    }
-  };
   
   // Update timer
   useEffect(() => {

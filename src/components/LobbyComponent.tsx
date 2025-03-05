@@ -115,7 +115,7 @@ export default function LobbyComponent({
               onClick={() => setReady(code)}
               className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md transition-colors"
             >
-              I'm Ready
+              I&apos;m Ready
             </button>
           ) : (
             <div className="bg-gray-100 dark:bg-gray-700 p-3 rounded-md text-center">

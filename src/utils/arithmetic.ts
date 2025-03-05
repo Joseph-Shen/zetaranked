@@ -23,16 +23,18 @@ export function generateProblem(): Problem {
   const operation = operations[getRandomInt(0, 3)];
   
   let answer: number;
+  let left: number;
+  let right: number;
   let firstNumber: number;
   let secondNumber: number;
 
-  var randGen = function randGen(min: number, max: number) {
+  let randGen = function randGen(min: number, max: number) {
     return function() {
       return min + Math.floor(Math.random() * (max - min + 1));
     };
   };
 
-  let options: Record<string, number> = {
+  const options: Record<string, number> = {
     "add_left_min": 2,
     "add_left_max": 100,
     "add_right_min": 2,
@@ -43,8 +45,8 @@ export function generateProblem(): Problem {
     "mul_right_max": 100,
   }
 
-  var genTypes = ['add_left', 'add_right', 'mul_left', 'mul_right'];
-  var randGens: Record<string, () => number> = {};
+  let genTypes = ['add_left', 'add_right', 'mul_left', 'mul_right'];
+  let randGens: Record<string, () => number> = {};
   genTypes.forEach(function(type) {
     randGens[type] = randGen(
       options[type + '_min'],
@@ -56,16 +58,16 @@ export function generateProblem(): Problem {
   // Handle each operation type differently to ensure valid problems
   switch (operation) {
     case 'addition':
-      var left = randGens[genTypes[0]]();
-      var right = randGens[genTypes[1]]();
+      left = randGens[genTypes[0]]();
+      right = randGens[genTypes[1]]();
       firstNumber = left;
       secondNumber = right;
       answer = left + right;
       break;
       
     case 'subtraction':
-      var left = randGens[genTypes[0]]();
-      var right = randGens[genTypes[1]]();
+      left = randGens[genTypes[0]]();
+      right = randGens[genTypes[1]]();
       answer = right;
       firstNumber = left + right;
       secondNumber = left;
@@ -73,16 +75,16 @@ export function generateProblem(): Problem {
       
     case 'multiplication':
       // Second number between 2-100
-      var left = randGens[genTypes[2]]();
-      var right = randGens[genTypes[3]]();
+      left = randGens[genTypes[2]]();
+      right = randGens[genTypes[3]]();
       answer = left * right;
       firstNumber = left;
       secondNumber = right;
       break;
       
     case 'division':
-      var left = randGens[genTypes[2]]();
-      var right = randGens[genTypes[3]]();
+      left = randGens[genTypes[2]]();
+      right = randGens[genTypes[3]]();
       answer = right;
       firstNumber = left * right;
       secondNumber = left;
@@ -90,8 +92,8 @@ export function generateProblem(): Problem {
       
     default:
       // Fallback to addition
-      var left = randGens[genTypes[0]]();
-      var right = randGens[genTypes[1]]();
+      left = randGens[genTypes[0]]();
+      right = randGens[genTypes[1]]();
       firstNumber = left;
       secondNumber = right;
       answer = left + right;
