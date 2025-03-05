@@ -102,7 +102,7 @@ export default function GameComponent({ gameState, code, playerName }: GameCompo
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 w-full max-w-md">
         <div className="flex justify-between items-center mb-4">
           <h1 className="text-xl font-bold text-gray-800 dark:text-white">
-            {playerName}'s Game
+            {playerName}&apos;s Game
           </h1>
           <div className="text-xl font-bold text-red-600 dark:text-red-400">
             {timeLeft}s
