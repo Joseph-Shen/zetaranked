@@ -6,7 +6,6 @@ interface Player {
   id: string;
   name: string;
   score: number;
-  answers: number;
   isReady: boolean;
 }
 
@@ -40,7 +39,7 @@ export default function LobbyComponent({
   const { socket } = useSocket();
   
   // Get current player
-  const currentPlayer = socket ? gameState?.players[socket.id] : null;
+  const currentPlayer = socket && socket.id && gameState?.players ? gameState.players[socket.id] : null;
   
   // Check if all players are ready
   const allPlayersReady = gameState 

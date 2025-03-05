@@ -9,7 +9,6 @@ interface Player {
   id: string;
   name: string;
   score: number;
-  answers: number;
   isReady: boolean;
 }
 
@@ -26,9 +25,10 @@ interface GameState {
 interface GameComponentProps {
   gameState: GameState;
   code: string;
+  playerName: string;
 }
 
-export default function GameComponent({ gameState, code}: GameComponentProps) {
+export default function GameComponent({ gameState, code, playerName }: GameComponentProps) {
   const { socket, submitAnswer } = useSocket();
   const [timeLeft, setTimeLeft] = useState(gameState.duration);
   
